@@ -1,0 +1,16 @@
+---
+- hosts: all
+
+  vars:
+    # Vars can also be passed in via CLI with `--extra-vars="name=value"`.
+    go_apps_location: /opt/goapp
+
+  tasks:
+  - name: Ensure goapp is stopped (since this is a test server).
+    service: name=goapp state=stopped
+
+  - name: Copy example go app to server.
+    copy: 'src=app dest={{ go_apps_location }} owner=root group=root mode="u+rwx,g-r"'
+
+  - name: Ensure firewalld is stopped (since this is a test server).
+    service: name=goapp state=started
