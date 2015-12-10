@@ -6,12 +6,11 @@
     go_apps_location: /opt/goapp
 
   tasks:
-  - command: /etc/init.d/goapp stop
- 
   - name: delete app 
     file:  dest=/opt/goapp/app state=absent
 
   - name: Copy example go app to server.
     copy: 'src=app dest={{ go_apps_location }} owner=root group=root mode="u+rwx,g-r" backup=yes'
 
-  - command: /etc/init.d/goapp start 
+  - name: restartinggo app to server.
+    service: name=goapp state=restarted
