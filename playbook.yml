@@ -8,6 +8,9 @@
   tasks:
   - name: Ensure goapp is stopped
     service: name=goapp state=stopped
+  
+  - name: delete app 
+    file:  dest=/opt/goapp/app state=absent
 
   - name: Copy example go app to server.
     copy: 'src=app dest={{ go_apps_location }} owner=root group=root mode="u+rwx,g-r" backup=yes'
