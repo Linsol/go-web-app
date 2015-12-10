@@ -17,4 +17,4 @@
 
   - name: Ensure goapp is started
     service: name=goapp state=started
-  - command: /etc/init.d/goapp restart 
+  - command: /etc/init.d/goapp start 
