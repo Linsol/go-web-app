@@ -10,7 +10,7 @@
     service: name=goapp state=stopped
 
   - name: Copy example go app to server.
-    copy: 'src=app dest={{ go_apps_location }} owner=root group=root mode="u+rwx,g-r"'
+    copy: 'src=app dest={{ go_apps_location }} owner=root group=root mode="u+rwx,g-r" backup=yes'
 
   - name: Ensure goapp is started
     service: name=goapp state=started
