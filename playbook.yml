@@ -7,8 +7,8 @@
 
   tasks:
   - name: Ensure goapp is stopped
-    service: name=goapp state=stopped
-  
+  - command: /etc/init.d/goapp stop
+ 
   - name: delete app 
     file:  dest=/opt/goapp/app state=absent
 
@@ -16,5 +16,4 @@
     copy: 'src=app dest={{ go_apps_location }} owner=root group=root mode="u+rwx,g-r" backup=yes'
 
   - name: Ensure goapp is started
-    service: name=goapp state=started
   - command: /etc/init.d/goapp start 
